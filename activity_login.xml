@@ -42,7 +42,7 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_height="180.5dp"
+            android:layout_height="200.5dp"
             android:id="@+id/linearLayout3"
             android:background="#ff78909c"
             android:gravity="center"
@@ -67,6 +67,12 @@
                 android:hint="Password"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+            <Button
+                android:text="Skip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/skip" />
+
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

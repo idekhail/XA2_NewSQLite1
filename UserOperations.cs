@@ -1,4 +1,6 @@
 ﻿using SQLite;
+
+using System.Collections.Generic;
 using System.IO;
 
 namespace XA2_NewSQLite1
@@ -56,6 +58,14 @@ namespace XA2_NewSQLite1
             return db.Table<Users>().Where(i => i.Id == id ).FirstOrDefault();
         }
 
+        // List of Lectures ارجاع بيانات مقرر جميع سجلات الشعب للمقرر الواحد على شكل   
+        public List<Users> GetAllUsers()
+        {
+            var db = new SQLiteConnection(dbPath);
+            return db.Table<Users>().ToList();
+        }
+
+
         [Table("Users")]
         public class Users
         {
@@ -63,6 +73,7 @@ namespace XA2_NewSQLite1
             public int Id { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
+          //  public string Name { get; set; }
         }
 
 

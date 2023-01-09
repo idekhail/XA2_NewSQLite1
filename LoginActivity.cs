@@ -24,6 +24,9 @@ namespace XA2_NewSQLite1
             var clear = FindViewById<Button>(Resource.Id.clear);
             var close = FindViewById<Button>(Resource.Id.close);
             var create = FindViewById<Button>(Resource.Id.create);
+            var skip = FindViewById<Button>(Resource.Id.skip);
+
+
 
             login.Click += delegate
             {
@@ -43,6 +46,14 @@ namespace XA2_NewSQLite1
                 else
                     Toast.MakeText(this, "Username or Password is Empty !!!", ToastLength.Long).Show();
             };
+
+            skip.Click += delegate
+            {                
+                Intent i = new Intent(this, typeof(ShowActivity));
+                StartActivity(i);                    
+            };
+
+
 
             clear.Click += delegate
             {

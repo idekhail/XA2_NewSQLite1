@@ -24,24 +24,37 @@ namespace XA2_NewSQLite1
             var uid = FindViewById<TextView>(Resource.Id.uid);
             var username = FindViewById<TextView>(Resource.Id.username);
             var password = FindViewById<TextView>(Resource.Id.password);
+            var show = FindViewById<TextView>(Resource.Id.show);
 
             var update = FindViewById<Button>(Resource.Id.update);
             var logout = FindViewById<Button>(Resource.Id.logout);
-           
+            var all = FindViewById<Button>(Resource.Id.all);
 
-            uid.Text = Intent.GetStringExtra("Id");
+            UserOperations.Users user;
+
+            string id = Intent.GetStringExtra("Id");
             var sq = new UserOperations();
-            var user = sq.GetUserById(Convert.ToInt32(uid.Text));
-            if (user != null)
+            if (id != null)
             {
+                user = sq.GetUserById(Convert.ToInt32(id));
+                uid.Text = user.Id + "";
                 username.Text = user.Username;
                 password.Text = user.Password;
+
+                update.Click += delegate
+                {
+                    Intent i = new Intent(this, typeof(UpdateActivity));
+                    i.PutExtra("Id", user.Id + "");
+                    StartActivity(i);
+                };
             }
-            update.Click += delegate
+            all.Click += delegate
             {
-                Intent i = new Intent(this, typeof(UpdateActivity));
-                i.PutExtra("Id", user.Id + "");
-                StartActivity(i);
+                var tables = sq.GetAllUsers();
+                string data = "";
+                foreach (var s in tables)
+                    data += s.Id + "\t" + s.Username + "\t" + s.Password + "\n";
+                show.Text = data;
             };
 
             logout.Click += delegate

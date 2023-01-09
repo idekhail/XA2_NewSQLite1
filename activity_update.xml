@@ -28,7 +28,7 @@
             android:gravity="center"
             android:background="#ffffffff">
             <TextView
-                android:text="Update User"
+                android:text="Update Activity"
                 android:layout_width="match_parent"
                 android:layout_height="52.0dp"
                 android:id="@+id/textView1"
